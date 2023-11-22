@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medhub</title>
+    <style>
+        *{box-sizing:border-box;}
+
+        body{font-family:Arial, Helvetica, sans-serif ; font-size:16px;}
+
+        .header{
+            background-color: black;
+            padding:3px;
+            text-align:center;
+            font-size:2.2rem;
+            color:white;
+            
+        }
+
+        
+        .navbar {
+  display: flex;
+  background-color: black;
+  border-color: white;
+}
+
+.navbar a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  flex: 25%;
+  font-size: 1rem;
+}
+
+.navbar a:hover {
+  background-color: #52b2bf;
+  color: black;
+}
+
+.container{
+            display:flex;
+        }
+
+        .column{
+            flex:1;
+            padding:15px;
+        }
+        .middle{
+            text-align:left;
+            line-height:200%;
+            font-size:1.5rem;
+        }
+        .right{
+            line-height: 200%;
+            text-align:justify;
+            font-size:1.2rem;
+        }
+/* Add this to your styles */
+.left-video-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.left-video-wrapper iframe {
+    border: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+ 
+        .footer{
+            background-color:black;
+            padding:10px;
+            text-align:center;
+            color:white;
+            
+        }
+
+        /* Add this to your styles */
+        .subscribe-form {
+            margin-top: 10px;
+        }
+
+        .subscribe-input {
+            padding: 5px;
+            width: 60%;
+            border: none;
+        }
+
+        .subscribe-button {
+            padding: 5px 10px;
+            background-color: #52b2bf;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (max-width:600px){
+            .container, .navbar{
+                flex-direction:column;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2><a href="home.html"><img src="medhub.jpg" width="200" height="150"></a></h2>
+    </div>
+
+<div class="navbar">
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="acad.html">Qna</a>
+    <a href="hub.html">HUB</a>
+  </div>
+
+    <div class="container">
+       
+        <div class="column left">
+            <div class="left-video-wrapper">
+                <iframe src="https://www.youtube.com/embed/GfO-3Oir-qM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="column middle">
+            <ol>
+                <li>List 1</li>
+                <li>List 2</li>
+                <li>List 3</li>
+                <li>List 4</li>
+            </ol>
+        </div>
+        <div class="column right">
+            <p>Sunt in culpa qui officia deserunt mollit anim<span style="color:red;"> id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span>   Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Subscribe to our newsletter for updates:</p>
+        <form class="subscribe-form" action="#" method="post"><!-- Replace '#' with your actual form action -->
+            <input type="email" class="subscribe-input" placeholder="Your Email Address" name="email" required>
+            <button type="submit" class="subscribe-button">Subscribe</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronic Prescription</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: black;
+            padding: 3px;
+            text-align: center;
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            background-color: black;
+            border-color: white;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            flex: 25%;
+            font-size: 0.8rem;
+        }
+
+        .navbar a:hover {
+            background-color: #52b2bf;
+            color: black;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column.middle {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .rectangle {
+            width: 210mm;
+            height: 297mm;
+            margin: 10px auto;
+            padding: 10px;
+            text-align: center;
+            font-size: 16px;
+            position: relative;
+            border: 5px solid;
+        }
+
+        
+        .clinic-info {
+            border-bottom: 10px double black;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+        .clinic-info {
+            
+            text-align: justify;
+        }
+
+        .patient-info,
+        .drug-info {
+            margin-top: 10px;
+        }
+
+        .patient-info {
+            text-align: right;
+        }
+
+        .drug-info {
+            text-align: left;
+        }
+
+        .form-content {
+            text-align: left;
+            margin-top: 20px;
+            padding-top: 50px;
+        }
+
+        #presLicenseNumberContainer {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            border-top: 3px solid black;
+        }
+
+        .form-container {
+            width: 40%;
+            padding: 10px;
+            text-align: justify;
+            margin: 0 auto;
+            border: 5px solid turquoise;
+        }
+
+        .form-input {
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background-color: black;
+            padding: 5px;
+            text-align: center;
+            color: white;
+        }
+
+        .subscribe-form {
+            margin-top: 5px;
+        }
+
+        .subscribe-input {
+            padding: 3px;
+            width: 60%;
+            border: none;
+        }
+
+        .subscribe-button {
+            padding: 3px 6px;
+            background-color: #52b2bf;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+
+        .print-button {
+            padding: 6px;
+            background-color: #52b2bf;
+            color: black;
+            border: none;
+            cursor: pointer;
+            float: right;
+        }
+
+        @media print {
+            * {
+                visibility: hidden;
+            }
+
+            .rectangle, .rectangle * {
+                visibility: visible;
+            }
+
+            .rectangle {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 98%;
+                page-break-before: always;
+                border: none;
+            }
+
+            .print-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h2><a href="home.html"><img src="medhub.jpg" width="200" height="150"></a></h2>
+    </div>
+
+    <div class="navbar">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="acad.html">Qna</a>
+        <a href="hub.html">HUB</a>
+    </div>
+    <h2 style="text-align:center">Electronic Prescription</h2>
+
+    <div class="container">
+        <div class="column middle">
+            <div class="rectangle">
+                <div class="doc-info">
+                    <!-- Doctor Information -->
+                    <p>
+                        <h1 style="font-size: larger;">DR <span id="presDoctorName"></span>, MD.</h1>
+                        <b><span id="presSpecialty"></span> Specialist</b><br>
+                        <i><span id="presAchievements"></span></i><br>
+                        <!-- Add any additional information or prescription details here -->
+                    </p>
+                </div>
+
+                <div class="clinic-info">
+                    <!-- Clinic Information -->
+                    <p>
+                        <b>Clinic Address:</b> <span id="clinicAddress"></span><br />
+                        <b>Tel No:</b> <span id="telNumber"></span><br />
+                        <b>Clinic Hours:</b> <span id="clinicHours"></span>
+                    </p>
+                </div>
+
+                <img src="rx.jpg" alt="Rx Image" style="width: 100px; margin-top: 10px; margin-left: 10px; float: left;">
+                <div id="presLicenseNumberContainer">
+                    Lic No. <span id="presLicenseNumber"></span>
+                </div>
+                <div class="form-content" id="prescriptionContent">
+                    <!-- Drug info and Patient info containers -->
+                    <div class="patient-info" id="patientInfoBox"></div>
+                    <div class="drug-info" id="drugInfoBox"></div>
+                </div>
+            </div>
+
+            <div class="form-container">
+                <form id="prescriptionForm">
+                    <div class="form-input">
+                        <label for="patientName">Patient Name:</label>
+                        <input type="text" id="patientName" name="patientName" required>
+                    </div>
+                    <div class="form-input">
+                        <label for="prescriptionDate">Prescription Date:</label>
+                        <input type="date" id="prescriptionDate" name="prescriptionDate" required>
+                    </div>
+                    <div class="form-input">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" required>
+                    </div>
+                    <div class="form-input">
+                        <label for="sex">Sex:</label>
+                        <select id="sex" name="sex" required>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-input">
+                        <label for="drugName">Drug Name:</label>
+                        <input type="text" id="drugName" name="drugName" required>
+                    </div>
+                    <div class="form-input">
+                        <label for="dosage">Dosage:</label>
+                        <input type="text" id="dosage" name="dosage" required>
+                    </div>
+                    <div class="form-input">
+                        <label for="instructions">Instructions:</label>
+                        <textarea id="instructions" name="instructions" rows="3" required></textarea>
+                    </div>
+                    <button type="button" onclick="savePrescription()">Save Prescription</button>
+                </form>
+            </div>
+        </div>
+        <button class="print-button" onclick="printPrescription()">Print Prescription</button>
+        <div class="footer">
+            <p>Subscribe to our newsletter for updates:</p>
+            <form class="subscribe-form" action="#" method="post">
+                <input type="email" class="subscribe-input" placeholder="Your Email Address" name="email" required>
+                <button type="submit" class="subscribe-button">Subscribe</button>
+            </form>
+        </div>
+
+        <script>
+            // Load saved doctor and clinic information on page load
+            window.onload = function () {
+                loadSavedDoctorInfo();
+                loadSavedClinicInfo();
+            };
+
+            function loadSavedDoctorInfo() {
+                // Retrieve doctor information from localStorage
+                var savedDoctorInfo = localStorage.getItem('doctorInfo');
+
+                if (savedDoctorInfo) {
+                    // Parse the JSON string to an object
+                    var doctorInfo = JSON.parse(savedDoctorInfo);
+
+                    // Update the content of the elements on the elecpres.html page
+                    document.getElementById('presDoctorName').textContent = doctorInfo.doctorName;
+                    document.getElementById('presSpecialty').textContent = doctorInfo.specialty;
+                    document.getElementById('presAchievements').textContent = doctorInfo.achievements;
+                    document.getElementById('presLicenseNumber').textContent = doctorInfo.licenseNumber;
+                }
+            }
+
+            function loadSavedClinicInfo() {
+                // Retrieve clinic information from localStorage
+                var savedClinicInfo = localStorage.getItem('clinicInfo');
+
+                if (savedClinicInfo) {
+                    // Parse the JSON string to an object
+                    var clinicInfo = JSON.parse(savedClinicInfo);
+
+                    // Update the content of the elements on the elecpres.html page
+                    document.getElementById('clinicAddress').textContent = clinicInfo.clinicAddress;
+                    document.getElementById('telNumber').textContent = clinicInfo.telNumber;
+                    document.getElementById('clinicHours').textContent = clinicInfo.clinicHours;
+                }
+            }
+
+            function savePrescription() {
+                // Get form values
+                const patientName = document.getElementById('patientName').value;
+                const age = document.getElementById('age').value;
+                const sex = document.getElementById('sex').value;
+                const prescriptionDate = document.getElementById('prescriptionDate').value;
+                const drugName = document.getElementById('drugName').value;
+                const dosage = document.getElementById('dosage').value;
+                const instructions = document.getElementById('instructions').value;
+
+                // Update patient information box
+                document.getElementById('patientInfoBox').innerHTML = `
+                    <b><span>Patient Name:</b> ${patientName}</span><br />
+                    <b><span>Age:</b> ${age}</span> <br />
+                    <b><span>Sex:</b> ${sex}</span><br />
+                    <b><span>Date:</b> ${prescriptionDate}</span>
+                `;
+
+                // Create prescription content for drug info
+                const drugInfoContent = `
+                    <ul>
+                        <li><b>Drug Name:</b> <br /> - ${drugName}</li><br />
+                        <li><b>Dosage:</b> <br /> -${dosage}</li><br />
+                        <li><b>Instructions:</b> <br /> - ${instructions}</li><br />
+                    </ul>
+                `;
+
+                // Append prescription content to the existing content in drug info box
+                document.getElementById('drugInfoBox').innerHTML += drugInfoContent;
+            }
+
+            function printPrescription() {
+                window.print();
+            }
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About MedHub</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+        }
+
+        .header {
+            background-color: black;
+            padding: 3px;
+            text-align: center;
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            background-color: black;
+            border-color: white;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            flex: 25%;
+            font-size: 1rem;
+        }
+
+        .navbar a:hover {
+            background-color: #52b2bf;
+            color: black;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column; /* Adjusted for small screens */
+        }
+
+        .column {
+            flex: 1;
+            padding: 15px;
+        }
+
+        .middle {
+            text-align: left;
+            line-height: 200%;
+            font-size: 1.5rem;
+        }
+
+        .right {
+            line-height: 200%;
+            text-align: justify;
+            font-size: 1.2rem;
+        }
+
+        .footer {
+            background-color: black;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Add this to your styles */
+        .subscribe-form {
+            margin-top: 10px;
+        }
+
+        .subscribe-input {
+            padding: 5px;
+            width: 60%;
+            border: none;
+        }
+
+        .subscribe-button {
+            padding: 5px 10px;
+            background-color: #52b2bf;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h2><a href="home.html"><img src="medhub.jpg" width="200" height="150"></a></h2>
+    </div>
+
+    <div class="navbar">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="acad.html">Qna</a>
+        <a href="hub.html">HUB</a>
+    </div>
+
+    <div class="container">
+        <div class="column middle">
+            <h2>About MedHub's Electronic Prescription Program</h2>
+            <p>
+                MedHub's Electronic Prescription Program is your ultimate solution for efficient and rapid patient
+                diagnosis. Our platform simplifies the prescription process, allowing healthcare professionals to
+                easily edit and manage prescriptions for faster and more accurate patient care.
+            </p>
+            <p>
+                With our program, we aim to eliminate the risk of mistakes caused by handwriting misunderstandings,
+                ensuring a safer and more reliable healthcare experience for patients and pharmacists alike.
+            </p>
+        </div>
+        <div class="column right">
+            <h2>Our Vision</h2>
+            <p>
+                We envision a healthcare environment where electronic prescriptions are seamlessly integrated,
+                empowering healthcare providers to focus on patient care rather than paperwork. MedHub is committed
+                to advancing technology to enhance the overall healthcare experience.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Subscribe to our newsletter for updates:</p>
+        <form class="subscribe-form" action="#" method="post">
+            <!-- Replace '#' with your actual form action -->
+            <input type="email" class="subscribe-input" placeholder="Your Email Address" name="email" required>
+            <button type="submit" class="subscribe-button">Subscribe</button>
+        </form>
+    </div>
+</body>
+
+</html>
