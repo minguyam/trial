@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact MedHub</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .header {
+            background-color: black;
+            padding: 3px;
+            text-align: center;
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            background-color: black;
+            border-color: white;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            flex: 25%;
+            font-size: 1rem;
+        }
+
+        .navbar a:hover {
+            background-color: #52b2bf;
+            color: black;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column; /* Adjusted for small screens */
+            padding: 20px;
+        }
+
+        .column {
+            flex: 1;
+            padding: 15px;
+        }
+
+        .middle {
+            text-align: left;
+            line-height: 200%;
+            font-size: 1.5rem;
+        }
+
+        .right {
+            line-height: 200%;
+            text-align: justify;
+            font-size: 1.2rem;
+        }
+
+        .footer {
+            background-color: black;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Add this to your styles */
+        .subscribe-form {
+            margin-top: 20px;
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .subscribe-input,
+        .message-input {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .subscribe-button {
+            padding: 10px;
+            width: 100%;
+            background-color: #52b2bf;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h2><a href="home.html"><img src="medhub.jpg" width="200" height="150"></a></h2>
+    </div>
+
+    <div class="navbar">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="acad.html">Qna</a>
+        <a href="hub.html">HUB</a>
+      </div>
+
+    <div class="container">
+        <div class="column middle">
+            <h2>Contact MedHub</h2>
+            <p>
+                We would love to hear from you! Please fill out the form below, and we'll get back to you as soon as
+                possible.
+            </p>
+            <form class="subscribe-form" action="#" method="post">
+                <!-- Replace '#' with your actual form action -->
+                <input type="text" class="subscribe-input" placeholder="Your Name" name="name" required>
+                <input type="email" class="subscribe-input" placeholder="Your Email Address" name="email" required>
+                <textarea class="message-input" placeholder="Your Message" name="message" required></textarea>
+                <button type="submit" class="subscribe-button">Submit</button>
+            </form>
+        </div>
+        <div class="column right">
+            <h2>Our Address</h2>
+            <p>
+                MedHub Clinical Documents Helper<br>
+                123 Health Street<br>
+                Medical City<br>
+                Healthland
+            </p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Subscribe to our newsletter for updates:</p>
+        <form class="subscribe-form" action="#" method="post">
+            <!-- Replace '#' with your actual form action -->
+            <input type="email" class="subscribe-input" placeholder="Your Email Address" name="email" required>
+            <button type="submit" class="subscribe-button">Subscribe</button>
+        </form>
+    </div>
+</body>
+
+</html>
